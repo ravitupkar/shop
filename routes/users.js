@@ -1,5 +1,6 @@
 const express = require('express');
 const userController = require('../controllers/usersControllers/');
+const userAuth = require('../middlewares/auth');
 
 
 var router = express.Router();
@@ -14,6 +15,9 @@ router.post('/register', userController.userAuth.register);
 
 /* login user . */
 router.post('/login', userController.userAuth.login);
+
+/* profile user . */
+router.post('/profile', userAuth.auth, userController.userAuth.profile);
 
 
 module.exports = router;

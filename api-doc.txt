@@ -1,0 +1,8 @@
+user home
+
+GET https://myshopstore.herokuapp.com/api/users
+
+
+user register
+
+POST https://myshopstore.herokuapp.com/api/users/register

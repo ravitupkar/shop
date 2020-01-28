@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const User = require('../../models/users');
+
 const config = require('../../config');
 
 module.exports.register = (req, res, next) => {
@@ -16,7 +17,7 @@ module.exports.register = (req, res, next) => {
         res.status(200).json({status : true, message : "User created Successfully"});
     })
     .catch((error) => {
-        res.json({status : false, message : "failed User creation", data : error});
+        res.json({status : false, message : "failed User creation", data : error.errmsg});
     });
 }
 
@@ -41,6 +42,19 @@ module.exports.login = (req, res, next) => {
     })
     .catch((error) => {
         res.json({status : false, message : "User Not Exist", data : error});
+    });
+    
+}
+
+module.exports.userProfile = (req, res, next) => {
+
+    let _id = req.body._id;
+    User.findOne({_id : _id})
+    .then((user) => {
+        res.status(200).json({status : true, message : "User Profile Successfully", data: user});
+    })
+    .catch((error) => {
+        res.json({status : false, message : "failed User Profile", data : error});
     });
     
 }
