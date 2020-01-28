@@ -13,7 +13,7 @@ module.exports.register = (req, res, next) => {
 
     user.save()
     .then((user) => {
-        res.status(200).json({status : true, message : "User created Successfully", data : user});
+        res.status(200).json({status : true, message : "User created Successfully"});
     })
     .catch((error) => {
         res.json({status : false, message : "failed User creation", data : error});
