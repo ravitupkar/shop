@@ -6,3 +6,17 @@ GET https://myshopstore.herokuapp.com/api/users
 user register
 
 POST https://myshopstore.herokuapp.com/api/users/register
+input 
+{
+    "name": "firstname lastname",
+    "email": "firstname3@gmail.com",
+    "mobile": "8600761827",
+    "username": "firstname3",
+    "password": "firstname"
+}
+output Successful
+{
+  "status": true,
+  "message": "User created Successfully"
+}
+output Successful
