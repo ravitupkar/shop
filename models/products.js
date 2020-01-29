@@ -15,12 +15,12 @@ const productSchema = new mongoose.Schema({
     },
     categoryID : {
         type: Schema.Types.ObjectId, 
-        ref: 'User',
+        ref: 'Category',
         required : true,
     },
     subCategoryID : {
         type: Schema.Types.ObjectId, 
-        ref: 'User',
+        ref: 'SubCategory',
         required : true,
     },
     productName : {
@@ -28,40 +28,46 @@ const productSchema = new mongoose.Schema({
         minlength : 5,
         required : true,
     },
-    productName : {
+    productDescription : {
         type : String,
         minlength : 5,
         required : true,
     },
-    profilePic : {
+    productPic : {
         type : String
     },
-    email : {
-        type : String,
-        required : true,
-        unique : true,
-        minlength : 5
+    productVariation : {
+        type : String
     },
-    username : {
+    productAvailable : {
         type : String,
+        minlength : 5,
         required : true,
-        unique : true,
-        minlength : 5
     },
-    password : {
-        type : String,
+    unitPrice : {
+        type : Number,
+        minlength : 5,
         required : true,
-        minlength : 5
     },
-    user_roll : {
-        type : String,
+    unitsInStock : {
+        type : Number,
+        minlength : 5,
         required : true,
-        minlength : 4
-    }
+    },
+    discountAvailable : {
+        type : String,
+        minlength : 5,
+        required : true,
+    },
+    discount : {
+        type : String,
+        minlength : 5,
+        required : true,
+    },
 },{
     timestamps :true
 }
 );
 
 const Products = mongoose.model('Products', productSchema);
- module.exports = Products;
+module.exports = Products;

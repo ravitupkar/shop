@@ -12,6 +12,8 @@ if(req.headers.authorization){
     if (req.body._id && req.body._id !== userId) {
       throw 'Invalid user ID';
     } else {
+      req.user = decodedToken;
+      // console.log(req.user);
       next();
     }
   } catch {
