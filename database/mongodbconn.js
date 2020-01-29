@@ -9,7 +9,7 @@ var db = mongoose.connection;
 
 
 db.on('connected', function(){
-    console.log("Mongoose default connection is open to ", config.MONGODBURI);
+    console.log("Mongoose default connection");
 });
 
 db.on('error', function(err){

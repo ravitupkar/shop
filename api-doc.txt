@@ -144,3 +144,166 @@ output Error
     "status": false,
     "message": "Invalid request!"
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+admin home
+
+GET https://myshopstore.herokuapp.com/api/admin
+
+
+admin register
+
+POST https://myshopstore.herokuapp.com/api/admin/register
+input 
+{
+    "name": "firstname lastname",
+    "email": "firstname3@gmail.com",
+    "mobile": "8600761827",
+    "username": "firstname3",
+    "password": "firstname"
+}
+output Successful
+{
+  "status": true,
+  "message": "User created Successfully"
+}
+output Error
+{
+  "status": false,
+  "message": "failed User creation",
+  "data": "E11000 duplicate key error collection: shop.users index: email_1 dup key: { email: \"firstname1@gmail.com\" }"
+}
+
+admin Login
+
+POST https://myshopstore.herokuapp.com/api/admin/login
+input 
+{
+    "email": "firstname2@gmail.com",
+    "password": "firstname"
+}
+output Successful
+{
+  "status": true,
+  "message": "User login Successfully",
+  "data": {
+    "_id": "5e3006e3b083ac001745151d",
+    "email": "firstname2@gmail.com",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTMwMDZlM2IwODNhYzAwMTc0NTE1MWQiLCJlbWFpbCI6ImZpcnN0bmFtZTJAZ21haWwuY29tIiwidXNlcm5hbWUiOiJmaXJzdG5hbWUyIiwicGFzc3dvcmQiOiIkMmEkMTAkcUlIZkE1WnVDWW1GRnJEaFUzT2VQT2g4MHVmMVdaNFh0TXczcUpLbnRXdnZQYS9EelNRamkiLCJpYXQiOjE1ODAyMDc4MjB9.a8EdlZQ4aE6YxVVglJTyS3aSOBqcw9_FKGUnrWUNlOc"
+  }
+}
+output Error
+{
+    "status": false,
+    "message": "Invalid Username/Password"
+}
+
+
+admin Change Password
+
+POST https://myshopstore.herokuapp.com/api/admin/change-password
+header : 
+authorization : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTMwMTg5YTE2ODU0MDA3ODhmYjM5YmUiLCJlbWFpbCI6ImZpcnN0bmFtZTNAZ21haWwuY29tIiwidXNlcm5hbWUiOiJmaXJzdG5hbWUzIiwicGFzc3dvcmQiOiIkMmEkMTAkSDBOY2VCTHEvd1pObXdBT0NUR3NQdVkzcENXaDhmQzdiUnMuSGZ0bjJmTTdIQWkzRU1yMTYiLCJpYXQiOjE1ODAyMTE2MzZ9.bzUl6qrWPns7cJGIFhibKPYCkUvnltnOW-OqzavdcnA
+input 
+{
+   "_id": "5e30189a1685400788fb39be",
+   "old_password" : "firstname3",
+   "password":"firstname30"
+}
+output Successful
+{
+  "status": true,
+  "message": "User password changed Successfully",
+}
+output Error
+{
+    "status": false,
+    "message": "Invalid Orignal Password"
+}
+
+admin forgot  Password
+
+POST https://myshopstore.herokuapp.com/api/admin/forgot-password
+input 
+{
+   "_id": "5e30189a1685400788fb39be",
+   "old_password" : "firstname3",
+   "password":"firstname30"
+}
+output Successful
+{
+  "status": true,
+  "message": "User password changed Successfully",
+}
+
+output Error
+{
+    "status": false,
+    "message": "Invalid Orignal Password"
+}
+
+admin reset  Password
+
+POST https://myshopstore.herokuapp.com/api/admin/reset-password/5e30189a1685400788fb39be
+input 
+{
+   "password": "firstname30"
+}
+output Successful
+{
+    "status": true,
+    "message": "User Password Reset Successfully"
+}
+
+output Error
+{
+    "status": false,
+    "message": "Invalid Orignal Password"
+}
+
+
+admin Update Profile
+
+POST https://myshopstore.herokuapp.com/api/admin/update-profile
+header : 
+authorization : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTMwMTg5YTE2ODU0MDA3ODhmYjM5YmUiLCJlbWFpbCI6ImZpcnN0bmFtZTNAZ21haWwuY29tIiwidXNlcm5hbWUiOiJmaXJzdG5hbWUzIiwicGFzc3dvcmQiOiIkMmEkMTAkSDBOY2VCTHEvd1pObXdBT0NUR3NQdVkzcENXaDhmQzdiUnMuSGZ0bjJmTTdIQWkzRU1yMTYiLCJpYXQiOjE1ODAyMTE2MzZ9.bzUl6qrWPns7cJGIFhibKPYCkUvnltnOW-OqzavdcnA
+input 
+{
+    "_id": "5e30189a1685400788fb39be",
+    "name": "firstname lastname",
+    "email": "ravitupkar02@gmail.com",
+    "mobile": 8600761828,
+    "username": "firstname3"
+}
+output Successful
+{
+    "status": true,
+    "message": "User Profile updated Successfully",
+    "data": {
+        "_id": "5e30189a1685400788fb39be",
+        "name": "firstname lastname",
+        "email": "ravitupkar02@gmail.com",
+        "mobile": 8600761828,
+        "username": "firstname3"
+    }
+}
+output Error
+{
+    "status": false,
+    "message": "Invalid request!"
+}
+
