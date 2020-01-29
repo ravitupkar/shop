@@ -31,6 +31,11 @@ const userSchema = new mongoose.Schema({
         required : true,
         minlength : 5
     },
+    user_roll : {
+        type : String,
+        required : true,
+        minlength : 4
+    },
 },{
     timestamps :true
 }

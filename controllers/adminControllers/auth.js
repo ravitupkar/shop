@@ -16,7 +16,7 @@ module.exports.register = (req, res, next) => {
                 email: req.body.email,
                 mobile: req.body.mobile,
                 username: req.body.username,
-                user_roll: 'user',
+                user_roll: 'admin',
                 password: hash
             });
             console.log(user);
@@ -43,7 +43,7 @@ module.exports.login = (req, res, next) => {
         if(user){
         bcrypt.compare(req.body.password, user.password, function (err, valid) {
             if (valid) {
-                    let {_id, email, username, password, user_roll} = user;
+                    let {_id, email, username, password, user_roll } = user;
                     var token = jwt.sign({ _id, email, username, password, user_roll}, config.SECRET);
                     res.status(200).json({status : true, message : "User login Successfully", data : {_id, email, token}});
                 } else {
