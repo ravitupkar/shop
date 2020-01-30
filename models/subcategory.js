@@ -5,11 +5,10 @@ const config = require('../config');
 const subCategorySchema = new mongoose.Schema({
     subCategoryName : {
         type : String,
-        minlength : 5
+        unique : true,
     },
     subCategorySlug : {
-        type : Number,
-        minlength : 10,
+        type : String,
         unique : true,
     },
     category :{
@@ -21,7 +20,8 @@ const subCategorySchema = new mongoose.Schema({
         ref: 'Subcategory',
     }],
     status : {
-        type : Boolean
+        type : Boolean,
+        default : true
     },
 },{
     timestamps :true

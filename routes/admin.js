@@ -54,5 +54,45 @@ router.post('/update-category', adminAuth.auth, adminController.adminCategory.up
 /* admin delete-category. */
 router.post('/delete-category', adminAuth.auth, adminController.adminCategory.deleteCategory);
 
+/* subcategory. */
+
+/* admin create-subcategory. */
+router.post('/create-subcategory', adminAuth.auth, adminController.adminSubCategory.createSubCategory);
+
+/* admin get-all-subcategory. */
+router.post('/get-all-subcategory', adminAuth.auth, adminController.adminSubCategory.getAllSubCategory);
+
+/* admin get-active-subcategory. */
+router.post('/get-active-subcategory', adminAuth.auth, adminController.adminSubCategory.getActiveSubCategory);
+
+/* admin get-subcategory. */
+router.post('/get-subcategory/:slug', adminAuth.auth, adminController.adminSubCategory.getSubCategory);
+
+/* admin update-subcategory. */
+router.post('/update-subcategory', adminAuth.auth, adminController.adminSubCategory.updateSubCategory);
+
+/* admin delete-subcategory. */
+router.post('/delete-subcategory', adminAuth.auth, adminController.adminSubCategory.deleteSubCategory);
+
+
+/* Product. */
+
+/* admin create-Product. */
+router.post('/create-product', adminAuth.auth, adminController.adminProduct.createProduct);
+
+/* admin get-all-product. */
+router.post('/get-all-product', adminAuth.auth, adminController.adminProduct.getAllProduct);
+
+/* admin get-active-product. */
+router.post('/get-active-product', adminAuth.auth, adminController.adminProduct.getActiveProduct);
+
+/* admin get-product. */
+router.post('/get-product/:slug', adminAuth.auth, adminController.adminProduct.getProduct);
+
+/* admin update-product. */
+router.post('/update-product', adminAuth.auth, adminController.adminProduct.updateProduct);
+
+/* admin delete-product. */
+router.post('/delete-product', adminAuth.auth, adminController.adminProduct.deleteProduct);
 
 module.exports = router;

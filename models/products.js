@@ -8,7 +8,7 @@ const productSchema = new mongoose.Schema({
         minlength : 5,
         required : true,
     },
-    supplierID : {
+    supplierId : {
         type: mongoose.Schema.ObjectId, 
         ref: 'User',
         required : true,
@@ -24,14 +24,10 @@ const productSchema = new mongoose.Schema({
         required : true,
     },
     productName : {
-        type : String,
-        minlength : 5,
-        required : true,
+        type : String
     },
     productDescription : {
-        type : String,
-        minlength : 5,
-        required : true,
+        type : String
     },
     productPic : {
         type : String
@@ -40,29 +36,19 @@ const productSchema = new mongoose.Schema({
         type : String
     },
     productAvailable : {
-        type : String,
-        minlength : 5,
-        required : true,
+        type : String
     },
     unitPrice : {
-        type : Number,
-        minlength : 5,
-        required : true,
+        type : Number
     },
     unitsInStock : {
-        type : Number,
-        minlength : 5,
-        required : true,
+        type : Number
     },
     discountAvailable : {
-        type : String,
-        minlength : 5,
-        required : true,
+        type : String
     },
     discount : {
-        type : String,
-        minlength : 5,
-        required : true,
+        type : String
     },
     status : {
         type : Boolean
