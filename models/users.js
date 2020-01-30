@@ -9,7 +9,8 @@ const userSchema = new mongoose.Schema({
     },
     mobile : {
         type : Number,
-        minlength : 10
+        minlength : 10,
+        unique : true,
     },
     profilePic : {
         type : String

@@ -9,17 +9,17 @@ const productSchema = new mongoose.Schema({
         required : true,
     },
     supplierID : {
-        type: Schema.Types.ObjectId, 
+        type: mongoose.Schema.ObjectId, 
         ref: 'User',
         required : true,
     },
-    categoryID : {
-        type: Schema.Types.ObjectId, 
+    categoryId : {
+        type: mongoose.Schema.ObjectId, 
         ref: 'Category',
         required : true,
     },
-    subCategoryID : {
-        type: Schema.Types.ObjectId, 
+    subCategoryId : {
+        type: mongoose.Schema.ObjectId, 
         ref: 'SubCategory',
         required : true,
     },
@@ -63,6 +63,9 @@ const productSchema = new mongoose.Schema({
         type : String,
         minlength : 5,
         required : true,
+    },
+    status : {
+        type : Boolean
     },
 },{
     timestamps :true

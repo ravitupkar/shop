@@ -256,7 +256,7 @@ output Error
     "message": "Invalid Orignal Password"
 }
 
-admin reset  Password
+admin reset Password
 
 POST https://myshopstore.herokuapp.com/api/admin/reset-password/5e30189a1685400788fb39be
 input 

@@ -1,14 +1,17 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+const {validationResult } = require('express-validator');
 
 const User = require('../../models/users');
-
 const config = require('../../config');
 const mail = require('../../util/mail');
 
-  
-
 module.exports.register = (req, res, next) => {
+
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(422).json({status : false, message : "failed User creation", data: errors.array() });
+    }
     bcrypt.genSalt(config.SALTROUNDS, function(err, salt) {
         bcrypt.hash(req.body.password, salt, function(err, hash) {
             let user = new User({
@@ -22,10 +25,10 @@ module.exports.register = (req, res, next) => {
             console.log(user);
             user.save()
             .then((user) => {
-                res.status(200).json({status : true, message : "User created Successfully"});
+                res.status(200).json({status : true, message : "User created Successfully", data: user });
             })
             .catch((error) => {
-                res.json({status : false, message : "failed User creation", data : error.errmsg});
+                res.status(421).json({status : false, message : "failed User creation", data : error});
             });
         });
     });
@@ -36,15 +39,19 @@ module.exports.register = (req, res, next) => {
 module.exports.login = (req, res, next) => {
 
     email = req.body.email;
-    password = req.body.password
+    password = req.body.password;
 
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(422).json({status : false, message : "failed User Login", errors: errors.array() });
+    }
     User.findOne({email : email})
     .then((user) => {
         if(user){
         bcrypt.compare(req.body.password, user.password, function (err, valid) {
             if (valid) {
-                    let {_id, email, username, password, user_roll } = user;
-                    var token = jwt.sign({ _id, email, username, password, user_roll}, config.SECRET);
+                    let {_id, email, username, user_roll } = user;
+                    var token = jwt.sign({ _id, email, username, user_roll}, config.SECRET, { expiresIn: '24h' });
                     res.status(200).json({status : true, message : "User login Successfully", data : {_id, email, token}});
                 } else {
                     res.json({status : false, message : "Invalid Username/Password"});
@@ -56,24 +63,6 @@ module.exports.login = (req, res, next) => {
     })
     .catch((error) => {
         res.json({status : false, message : "User Not Exist", data : error});
-    });
-    
-}
-
-module.exports.userProfile = (req, res, next) => {
-
-    let _id = req.body._id;
-    User.findOne({_id : _id})
-    .then((user) => {
-        if(user){
-        let {_id, name, email, mobile, username} = user;
-        res.status(200).json({status : true, message : "User Profile Successfully", data: {_id, name, email, mobile, username}});
-    }else{
-        res.json({status : false, message : "User Not Exist"});
-    }
-    })
-    .catch((error) => {
-        res.json({status : false, message : "failed User Profile", data : error});
     });
     
 }

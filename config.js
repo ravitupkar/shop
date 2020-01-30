@@ -8,5 +8,5 @@ module.exports = {
     ADMINEMAIL : "ravitupkar01@gmail.com",
     EMAILSERVICE : "gmail",
     EMAILUSERNAME : "ravitupkar01@gmail.com",
-    EMAILPASSWORD : "Ravindra@1234",
+    EMAILPASSWORD : "Password@ravi",
 }
