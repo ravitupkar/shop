@@ -35,6 +35,14 @@ module.exports.adminSubCategory = {
     deleteSubCategory : subcategory.deleteSubCategory,
 }
 
+module.exports.adminProduct = {
+    createProduct : product.createProduct,
+    getAllProduct : product.getAllProduct,
+    getActiveProduct : product.getActiveProduct,
+    getProduct : product.getProduct,
+    updateProduct : product.updateProduct,
+    deleteProduct : product.deleteProduct,
+}
 
 module.exports.adminProduct = {
     createProduct : product.createProduct,

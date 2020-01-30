@@ -7,6 +7,7 @@ const productSchema = new mongoose.Schema({
         type : String,
         minlength : 5,
         required : true,
+        unique : true
     },
     supplierId : {
         type: mongoose.Schema.ObjectId, 
@@ -24,7 +25,13 @@ const productSchema = new mongoose.Schema({
         required : true,
     },
     productName : {
-        type : String
+        type : String,
+        required : true,
+    },
+    productSlug : {
+        type : String,
+        required : true,
+        unique : true
     },
     productDescription : {
         type : String
@@ -51,7 +58,8 @@ const productSchema = new mongoose.Schema({
         type : String
     },
     status : {
-        type : Boolean
+        type : Boolean,
+        default: true
     },
 },{
     timestamps :true

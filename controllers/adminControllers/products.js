@@ -20,6 +20,7 @@ module.exports.createProduct = (req, res, next) => {
             categoryId  : req.body.categoryId,
             subCategoryId : req.body.subCategoryId,
             productName : req.body.productName,
+            productSlug : req.body.productSlug,
             productDescription : req.body.productDescription,
             productPic : req.body.productPic,
             productVariation  : req.body.productVariation,
@@ -79,8 +80,20 @@ module.exports.getProduct = (req, res, next) => {
 module.exports.updateProduct = (req, res, next) => {
     let _id = req.body._id;
     let product = {
-        subCategoryName : req.body.subCategoryName,
-        subCategorySlug : req.body.subCategorySlug,
+        sku : req.body.sku,
+            supplierId : req.body.supplierId,
+            categoryId  : req.body.categoryId,
+            subCategoryId : req.body.subCategoryId,
+            productName : req.body.productName,
+            productSlug : req.body.productSlug,
+            productDescription : req.body.productDescription,
+            productPic : req.body.productPic,
+            productVariation  : req.body.productVariation,
+            productAvailable  : req.body.productAvailable,
+            unitPrice  : req.body.unitPrice,
+            unitsInStock  : req.body.unitsInStock,
+            discountAvailable : req.body.discountAvailable,
+            discount  : req.body.discount
     }
     
 
